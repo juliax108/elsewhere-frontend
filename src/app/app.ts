@@ -1,9 +1,11 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
+import { TripList } from './trip-list/trip-list';
+
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, TripList], 
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
