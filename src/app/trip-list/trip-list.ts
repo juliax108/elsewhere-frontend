@@ -3,9 +3,11 @@ import { OnInit } from '@angular/core';
 
 import { Trip } from '../trip';
 
+import { DatePipe } from '@angular/common';
+
 @Component({
   selector: 'app-trip-list',
-  imports: [],
+  imports: [DatePipe],
   templateUrl: './trip-list.html',
   styleUrl: './trip-list.css',
 })
@@ -19,5 +21,12 @@ export class TripList implements OnInit {
       console.log('Daten vom Backend:', data);
       this.trips = data;
     });
+
+    this.tripService.tripCreated.subscribe(() => {
+      this.tripService.getTrips().subscribe((data: any) => {
+        this.trips = data;
+      });
+    });
   }
+
 }

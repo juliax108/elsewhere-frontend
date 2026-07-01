@@ -1,0 +1,24 @@
+<form [formGroup]="tripForm" (ngSubmit)="onSubmit()">
+    <input formControlName="title" placeholder="Titel">
+    <input formControlName="country" placeholder="Land">
+    <input formControlName="city" placeholder="Stadt">
+    <input formControlName="startDate" type="date">
+    <input formControlName="endDate" type="date">
+    <input formControlName="description" placeholder="Beschreibung">
+    <input formControlName="travelWith" placeholder="Mit wem?">
+    <select formControlName="transportMode">
+        <option value="">Bitte wählen</option>
+        <option value="Flugzeug">Flugzeug</option>
+        <option value="Auto">Auto</option>
+        <option value="Bahn">Bahn</option>
+        <option value="Bus">Bus</option>
+        <option value="Schiff">Schiff</option>
+    </select>
+    <input formControlName="rating" type="number" min="1" max="5" placeholder="Bewertung (1-5)">
+
+    <button type="submit">Speichern</button>
+</form>
+
+
+
+

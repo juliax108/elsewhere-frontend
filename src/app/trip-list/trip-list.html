@@ -1,10 +1,13 @@
 <p>trip-list works!</p>
 
-<p>Anzahl Trips: {{ trips.length }}</p>
-
 @for (trip of trips; track trip._id) {
-    <p>{{ trip.title }}</p>
-    <p>{{ trip.country }}</p>
-    <p>{{ trip.city }}</p>
-    <p>{{ trip.rating }}</p>
+    <p>{{ trip.title }}</p>
+    <p>{{ trip.country }}</p>
+    <p>{{ trip.city }}</p>
+    <p>{{ trip.startDate | date:'dd.MM.yyyy' }}</p>
+    <p>{{ trip.endDate | date:'dd.MM.yyyy'}}</p>
+    <p>{{ trip.description }}</p>
+    <p>{{ trip.travelWith }}</p>
+    <p>{{ trip.transportMode }}</p>
+    <p>{{ trip.rating }}</p>
 }
