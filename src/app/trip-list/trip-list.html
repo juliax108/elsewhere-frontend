@@ -10,4 +10,7 @@
     <p>{{ trip.travelWith }}</p>
     <p>{{ trip.transportMode }}</p>
     <p>{{ trip.rating }}</p>
+
+    <button (click)="onDelete(trip._id)">Löschen</button>
+    <button (click)="onEdit(trip)">Bearbeiten</button>
 }

@@ -8,6 +8,7 @@ import { Subject } from 'rxjs';
 export class Trip {
   constructor(private http: HttpClient) {}
   tripCreated = new Subject<void>();
+  tripToEdit = new Subject<any>();
 
   getTrips() {
     return this.http.get('http://localhost:3000/trips');
@@ -16,5 +17,15 @@ export class Trip {
   createTrip(tripData: any) {
     return this.http.post('http://localhost:3000/trips', tripData);
   }
+
+  deleteTrip(id: string) {
+  return this.http.delete(`http://localhost:3000/trips/${id}`);
+  }
+
+  updateTrip(id: string, tripData: any) {
+    return this.http.put(`http://localhost:3000/trips/${id}`, tripData);
+  }
+  
 }
+
 

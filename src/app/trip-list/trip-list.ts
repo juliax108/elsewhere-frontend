@@ -29,4 +29,16 @@ export class TripList implements OnInit {
     });
   }
 
+  onDelete(id: string) {
+    this.tripService.deleteTrip(id).subscribe(() => {
+      this.tripService.getTrips().subscribe((data: any) => {
+        this.trips = data;
+      });
+    });
+  }
+
+  onEdit(trip: any) {
+    this.tripService.tripToEdit.next(trip);
+  }
+
 }
