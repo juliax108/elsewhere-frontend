@@ -1,0 +1,9 @@
+<form [formGroup]="wishlistForm" (ngSubmit)="onSubmit()">
+    <input formControlName="country" placeholder="Land">
+    <input formControlName="city" placeholder="Stadt">
+    <input formControlName="bestTravelTime" placeholder="beste Reisezeit">
+    <input formControlName="notes" placeholder="Notizen">
+    <input formControlName="priority" type="number" min="1" max="5" placeholder="Priorität (1-5)">
+
+    <button type="submit">Speichern</button>
+</form>

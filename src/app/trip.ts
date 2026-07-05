@@ -17,14 +17,16 @@ export class Trip {
   createTrip(tripData: any) {
     return this.http.post('http://localhost:3000/trips', tripData);
   }
+  
+  updateTrip(id: string, tripData: any) {
+    return this.http.put(`http://localhost:3000/trips/${id}`, tripData);
+  }
 
   deleteTrip(id: string) {
   return this.http.delete(`http://localhost:3000/trips/${id}`);
   }
 
-  updateTrip(id: string, tripData: any) {
-    return this.http.put(`http://localhost:3000/trips/${id}`, tripData);
-  }
+  
   
 }
 

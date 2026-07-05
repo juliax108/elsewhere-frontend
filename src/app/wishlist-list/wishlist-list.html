@@ -1,0 +1,12 @@
+<p>wishlist-list works!</p>
+
+@for (wishlistItem of wishlist; track wishlistItem._id) {
+    <p>{{ wishlistItem.country }}</p>
+    <p>{{ wishlistItem.city }}</p>
+    <p>{{ wishlistItem.bestTravelTime }}</p>
+    <p>{{ wishlistItem.notes }}</p>
+    <p>{{ wishlistItem.priority }}</p>
+
+    <button (click)="onDelete(wishlistItem._id)">Löschen</button>
+    <button (click)="onEdit(wishlistItem)">Bearbeiten</button>
+}
