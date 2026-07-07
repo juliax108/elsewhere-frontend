@@ -2,34 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as L from 'leaflet';
 import { HttpClient } from '@angular/common/http';
 import { Trip } from '../trip';
-
-const countryTranslations: any = {
-  'Deutschland': 'Germany',
-  'Italien': 'Italy',
-  'Frankreich': 'France',
-  'Spanien': 'Spain',
-  'Portugal': 'Portugal',
-  'Griechenland': 'Greece',
-  'Norwegen': 'Norway',
-  'Schweden': 'Sweden',
-  'Dänemark': 'Denmark',
-  'Finnland': 'Finland',
-  'Niederlande': 'Netherlands',
-  'Belgien': 'Belgium',
-  'Österreich': 'Austria',
-  'Schweiz': 'Switzerland',
-  'Polen': 'Poland',
-  'Tschechien': 'Czech Republic',
-  'Kroatien': 'Croatia',
-  'Ungarn': 'Hungary',
-  'Irland': 'Ireland',
-  'Vereinigtes Königreich': 'United Kingdom',
-  'Island': 'Iceland',
-  'Türkei': 'Turkey',
-  'USA': 'United States of America',
-  'Thailand': 'Thailand',
-  'Japan': 'Japan',
-};
+import { countryTranslations } from '../country-data';
 
 const defaultIcon = L.icon({
   iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
