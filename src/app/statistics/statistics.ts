@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Trip } from '../trip';
 import { max } from 'rxjs';
-import { countryContinents } from '../country-data';
+import { countryTranslations, countryContinents } from '../country-data';
 
 
 @Component({
@@ -39,7 +39,7 @@ export class Statistics implements OnInit {
   }
 
   getWorldPercentage() {
-    return this.getUniqueCountries() / 195 * 100; 
+    return (this.getUniqueCountries() / 195 * 100).toFixed(2); 
   }
 
   getMostFrequentCountry() {
@@ -80,6 +80,16 @@ export class Statistics implements OnInit {
     }
 
     return mostFrequentCity;
+  }
+
+  getUniqueContinents() {
+    const continents = this.trips.map((trip: any) => {
+      const englishName = countryTranslations[trip.country];
+      return countryContinents[englishName];
+    });
+
+    const unqiueContinents = new Set(continents);
+    return unqiueContinents.size;
   }
   
 }

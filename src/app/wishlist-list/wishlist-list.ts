@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Wishlist } from '../wishlist';
+import { Wishlist } from '../wishlist';
 
 @Component({
   selector: 'app-wishlist-list',
@@ -10,6 +10,7 @@ import { Wishlist } from '../wishlist';
 })
 export class WishlistList implements OnInit{
   wishlist: any[] = [];
+  weatherData: any = {};
 
   constructor(private wishlistService: Wishlist) {}
 
@@ -17,6 +18,13 @@ export class WishlistList implements OnInit{
     this.wishlistService.getWishlist().subscribe((data: any) => {
       console.log('Daten vom Backend:', data);
       this.wishlist = data;
+
+      data.forEach((item: any) => {
+        console.log('Rufe Wetter ab für:', item.city);
+        this.wishlistService.getWeather(item.city).subscribe((weather: any) => {
+          this.weatherData[item.city] = weather;
+        });
+      });
     });
 
     this.wishlistService.wishlistItemCreated.subscribe(() => {

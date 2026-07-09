@@ -9,4 +9,8 @@
 
     <button (click)="onDelete(wishlistItem._id)">Löschen</button>
     <button (click)="onEdit(wishlistItem)">Bearbeiten</button>
+
+    @if (weatherData[wishlistItem.city]) {
+        <p>Aktuelles Wetter: {{ weatherData[wishlistItem.city].main.temp }}°C</p>
+    }
 }

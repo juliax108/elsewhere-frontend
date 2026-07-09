@@ -25,5 +25,9 @@ export class Wishlist {
   deleteWishlistItem(id: string) {
   return this.http.delete(`http://localhost:3000/wishlist/${id}`);
   }
+
+  getWeather(city: string) {
+    return this.http.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=80db9d2f6e51bcacb9b7c5987c38996b&units=metric`);
+  }
   
 }
