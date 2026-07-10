@@ -21,6 +21,7 @@ export const countryTranslations: any = {
   'Vereinigtes Königreich': 'United Kingdom',
   'Island': 'Iceland',
   'Türkei': 'Turkey',
+  'Amerika' : 'United States of America',
   'USA': 'United States of America',
   'Thailand': 'Thailand',
   'Japan': 'Japan',

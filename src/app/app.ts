@@ -11,9 +11,11 @@ import { WorldMap } from './world-map/world-map';
 
 import { Statistics } from './statistics/statistics';
 
+import { WishlistMap } from './wishlist-map/wishlist-map';
+
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, TripList, TripForm, WishlistList, WishlistForm, WorldMap, Statistics], 
+  imports: [RouterOutlet, TripList, TripForm, WishlistList, WishlistForm, WorldMap, Statistics, WishlistMap], 
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

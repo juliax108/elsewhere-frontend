@@ -15,7 +15,7 @@ export class WishlistMap implements OnInit {
   constructor(private http: HttpClient, private wishlistService: Wishlist) {}
 
   ngOnInit() {
-      const map = L.map('map').setView([51.1657, 10.4515], 4);
+      const map = L.map('wishlist-map').setView([51.1657, 10.4515], 4);
   
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { 
         attribution: '© OpenStreetMap contributors'
@@ -37,6 +37,7 @@ export class WishlistMap implements OnInit {
         this.http.get('https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json').subscribe((geoData: any) => { 
           L.geoJSON(geoData, {
             style: (feature: any) => {
+              console.log('Ländername in GeoJSON:', feature.properties.name);
               const isDesired = desiredCountries.includes(feature.properties.name);
               return {
                 fillColor: isDesired ? '#8db7f9' : '#cccccc',
