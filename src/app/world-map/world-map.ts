@@ -3,13 +3,7 @@ import * as L from 'leaflet';
 import { HttpClient } from '@angular/common/http';
 import { Trip } from '../trip';
 import { countryTranslations } from '../country-data';
-
-const defaultIcon = L.icon({
-  iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
-  shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
-  iconSize: [25, 41],
-  iconAnchor: [12, 41]
-});
+import { defaultIcon } from '../map-config';
 
 @Component({
   selector: 'app-world-map',
