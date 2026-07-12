@@ -23,14 +23,16 @@ export class WorldMap implements OnInit {
 
     this.tripService.getTrips().subscribe((trips: any) => {
       const visitedCountries = trips.map((trip: any) => countryTranslations[trip.country]);
-      trips.forEach((trip: any) => {
-        this.http.get(`https://nominatim.openstreetmap.org/search?q=${trip.city}&format=json`).subscribe((results:any) => {
-          if (results.length > 0) {
-            const lat = results[0].lat;
-            const lon = results[0].lon;
-            L.marker([lat, lon], { icon: defaultIcon }).addTo(map).bindPopup(trip.title);
-          }
-        });
+      trips.forEach((trip: any, index: number) => {
+        setTimeout(() => {
+          this.http.get(`https://nominatim.openstreetmap.org/search?q=${trip.city}&format=json`).subscribe((results:any) => {
+            if (results.length > 0) {
+              const lat = results[0].lat;
+              const lon = results[0].lon;
+              L.marker([lat, lon], { icon: defaultIcon }).addTo(map).bindPopup(trip.title);
+            }
+          });
+        }, index * 1000);
       });
     
       this.http.get('https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json').subscribe((geoData: any) => { 
