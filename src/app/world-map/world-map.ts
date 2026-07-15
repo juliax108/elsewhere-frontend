@@ -22,25 +22,50 @@ export class WorldMap implements OnInit {
     }).addTo(map);
 
     this.tripService.getTrips().subscribe((trips: any) => {
-      const visitedCountries = trips.map((trip: any) => countryTranslations[trip.country]);
-      trips.forEach((trip: any, index: number) => {
+
+      const allStops = trips.flatMap((trips: any) => 
+        (trips.stops || []).map((stop: any) => ({
+          ...stop,
+          tripTitle: trips.title
+        }))
+      );
+
+      const visitedCountries = allStops
+      .map((trip: any) => countryTranslations[trip.country])
+      .filter((country: string) => country);
+
+      allStops.forEach((stop: any, index: number) => {
         setTimeout(() => {
-          this.http.get(`https://nominatim.openstreetmap.org/search?q=${trip.city}&format=json`).subscribe((results:any) => {
+
+          const searchPlace = `${stop.city}, ${stop.country}`;
+
+          this.http.get(
+            `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(searchPlace)}&format=json`
+          ).subscribe((results:any) => {
+
             if (results.length > 0) {
               const lat = results[0].lat;
               const lon = results[0].lon;
-              L.marker([lat, lon], { icon: defaultIcon }).addTo(map).bindPopup(trip.title);
-            }
-          });
-        }, index * 1000);
-      });
+
+              L.marker([lat, lon], { icon: defaultIcon })
+              .addTo(map)
+              .bindPopup(`${stop.tripTitle}: ${stop.city}`);
+          }
+        });
+      
+      }, index * 1000);
+    });
     
-      this.http.get('https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json').subscribe((geoData: any) => { 
+      this.http.get(
+        'https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json'
+      ).subscribe((geoData: any) => { 
+
         L.geoJSON(geoData, {
           style: (feature: any) => {
             const isVisited = visitedCountries.includes(feature.properties.name);
+
             return {
-              fillColor: isVisited ? '#f8bbd0' : '#cccccc',
+              fillColor: isVisited ? '#1a3a5c' : '#cccccc',
               fillOpacity: isVisited ? 0.6 : 0.1,
               color: '#666',
               weight: 1

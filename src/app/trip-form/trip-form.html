@@ -1,5 +1,12 @@
 <form [formGroup]="tripForm" (ngSubmit)="onSubmit()">
-    <input formControlName="title" placeholder="Titel">
+    <input formControlName="title" placeholder="Reisename">
+    <div class="mb-3">
+        <label class="form-label">Status</label>
+        <select class="form-select" formControlName="status">
+            <option value="geplant">Geplant</option>
+            <option value="abgeschlossen">Abgeschlossen</option>
+        </select>
+    </div>
     <input formControlName="country" placeholder="Land">
     <input formControlName="city" placeholder="Stadt">
     <input formControlName="startDate" type="date">
@@ -14,7 +21,14 @@
         <option value="Bus">Bus</option>
         <option value="Schiff">Schiff</option>
     </select>
-    <input formControlName="rating" type="number" min="1" max="5" placeholder="Bewertung (1-5)">
+    @if (tripForm.get('status')?.value === 'abgeschlossen') {
+        <input formControlName="rating" 
+        type="number" 
+        min="1" 
+        max="5" 
+        placeholder="Bewertung (1-5)">
+    }
+        
 
     <button type="submit">Speichern</button>
 </form>
