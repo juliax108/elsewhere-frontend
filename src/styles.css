@@ -7,3 +7,60 @@
     --champagner: #d4af7a;
     --creme: #faf8f5;
 }
+
+
+/* ----------- Navbar ----------- */
+
+.main-navbar {
+    background-color: var(--creme);
+    height: 80px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding: 0 70px;
+
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    border-bottom: 1px solid rgba(212, 175, 122, 0.25);
+}
+
+.brand {
+    text-decoration: none;
+
+    color: var(--marineblau);
+
+    font-size: 1.8rem;
+    font-weight: 700;
+
+    letter-spacing: 0.5px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 35px;
+}
+
+.nav-links a {
+    text-decoration: none;
+
+    color: var(--marineblau);
+
+    font-weight: 500;
+
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--champagner);
+}
+
+body {
+    margin: 0;
+    color: var(--marineblau);
+}

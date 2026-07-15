@@ -1,3 +1,17 @@
+<nav class="main-navbar">
+    <a class="brand" routerLink="/">
+        <span>Elsewhere</span>
+    </a>
 
+    <div class="nav-links">
+        <a routerLink="/">Home</a>
 
-<router-outlet />
+        <a routerLink="/reisen">Reisen</a>
+
+        <a routerLink="/wunschliste">Wunschliste</a>
+    </div>
+</nav>
+
+<main>
+    <router-outlet></router-outlet>
+</main>
