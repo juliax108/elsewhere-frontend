@@ -1,5 +1,7 @@
 <form [formGroup]="tripForm" (ngSubmit)="onSubmit()">
+
     <input formControlName="title" placeholder="Reisename">
+
     <div class="mb-3">
         <label class="form-label">Status</label>
         <select class="form-select" formControlName="status">
@@ -7,12 +9,47 @@
             <option value="abgeschlossen">Abgeschlossen</option>
         </select>
     </div>
-    <input formControlName="country" placeholder="Land">
-    <input formControlName="city" placeholder="Stadt">
+
+   <div formArrayName="stops">
+    @for (stop of stops.controls; track $index) {
+        <div [formGroupName]="$index">
+            <h3>Station {{ $index +1 }}</h3>
+
+            <input
+                formControlName="country"
+                type="text"
+                placeholder="Land">
+            
+            <input
+                formControlName="city"
+                type="text"
+                placeholder="Stadt">
+
+            @if(stops.length > 1) {
+                <button
+                    type="button"
+                    (click)="removeStop($index)">
+                    Station entfernen
+                </button>
+            }
+        </div>
+    }
+   </div>
+
+   <button
+    type="button"
+    (click)="addStop()">
+    + Station hinzufügen
+   </button>
+
     <input formControlName="startDate" type="date">
+
     <input formControlName="endDate" type="date">
+
     <input formControlName="description" placeholder="Beschreibung">
+
     <input formControlName="travelWith" placeholder="Mit wem?">
+
     <select formControlName="transportMode">
         <option value="">Transportmittel</option>
         <option value="Flugzeug">Flugzeug</option>
@@ -21,6 +58,7 @@
         <option value="Bus">Bus</option>
         <option value="Schiff">Schiff</option>
     </select>
+
     @if (tripForm.get('status')?.value === 'abgeschlossen') {
         <input formControlName="rating" 
         type="number" 
