@@ -1,9 +1,68 @@
-<p>statistics works!</p>
+<section class="statistics-section">
+    <div class="statistics-header">
+        <p class="eyebrow">Deine Reiseübersicht</p>
+        <h2>Die Welt, die du bereits entdeckt hast</h2>
+    </div>
 
-<p>Anzahl Länder:    {{ getUniqueCountries() }}</p>
-<p>Anzahl Städte:    {{ getUniqueCities() }}</p>
-<p>Prozent der Welt: {{ getWorldPercentage() }}%</p>
-<p>Anzahl Kontinete: {{ getUniqueContinents() }} von 7</p>
-<p>Häufigstes Land:  {{ getMostFrequentCountry() }}</p>
-<p>Häufigste Stadt:  {{ getMostFrequentCity() }}</p>
-<p>Anzahl Reisen:    {{ trips.length }}</p>
+    <div class=next-trip-card>
+        @if (getNextTrip(); as nextTrip) {
+            <div>
+                <p class="card-label">Nächste Reise</p>
+                <h3>{{ nextTrip.title }}</h3>
+
+                <p>
+                    {{ nextTrip.startDate | date:'dd.MM.yyyy' }}
+                    - 
+                    {{ nextTrip.endDate | date:'dd.MM.yyyy' }}
+                </p>
+
+                <p>
+                    {{ nextTrip.stops.length }}
+                    {{ nextTrip.stops.length === 1 ? 'Station' : 'Stationen' }}
+                </p>
+            </div>
+        } @else {
+            <div>
+                <p class="card-label">Nächste Reise</p>
+                <h3>Noch keine Reise geplant</h3>
+            </div>
+        }
+    </div>
+
+    <div class="statistics-grid">
+        <article class="statistics-card">
+            <p class="card-label">Reisen</p>
+            <strong>{{ trips.length }}</strong>
+        </article>
+
+        <article class="statistics-card">
+            <p class="card-label">Länder</p>
+            <strong> {{ getUniqueCountries() }}</strong>
+        </article>
+
+        <article class="statistics-card">
+            <p class="card-label">Städte</p>
+            <strong> {{ getUniqueCities() }}</strong>
+        </article>
+
+        <article class="statistics-card">
+            <p class="card-label">Kontinente</p>
+            <strong> {{ getUniqueContinents() }} von 7</strong>
+        </article>
+
+        <article class="statistics-card">
+            <p class="card-label">Von der Welt</p>
+            <strong> {{ getWorldPercentage() }} %</strong>
+        </article>
+
+        <article class="statistics-card">
+            <p class="card-label">Häufigstes Land</p>
+            <strong> {{ getMostFrequentCountry() }}</strong>
+        </article>
+
+        <article class="statistics-card">
+            <p class="card-label">Häufigste Stadt</p>
+            <strong> {{ getMostFrequentCity() }}</strong>
+        </article>
+    </div>
+</section>

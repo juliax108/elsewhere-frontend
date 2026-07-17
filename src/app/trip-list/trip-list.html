@@ -1,16 +1,38 @@
-<p>trip-list works!</p>
-
 @for (trip of trips; track trip._id) {
-    <p>{{ trip.title }}</p>
-    <p>{{ trip.country }}</p>
-    <p>{{ trip.city }}</p>
-    <p>{{ trip.startDate | date:'dd.MM.yyyy' }}</p>
-    <p>{{ trip.endDate | date:'dd.MM.yyyy'}}</p>
-    <p>{{ trip.description }}</p>
-    <p>{{ trip.travelWith }}</p>
-    <p>{{ trip.transportMode }}</p>
-    <p>{{ trip.rating }}</p>
+   <article class="trip-card">
+    <h3>{{ trip.title }}</h3>
+        
+    <p>
+        {{ trip.startDate | date:'dd.MM.yyyy' }}
+        - 
+        {{ trip.endDate | date:'dd.MM.yyyy' }} 
+    </p>
 
-    <button (click)="onDelete(trip._id)">Löschen</button>
-    <button (click)="onEdit(trip)">Bearbeiten</button>
+    <div>
+        <strong>Stationen:</strong>
+
+        @for (stop of trip.stops; track stop._id) {
+            <p>{{ stop.city }}, {{ stop.country }}</p>
+        } @empty {
+            <p>Keine Stationen vorhanden</p>
+        }
+    </div>
+
+    <p>Status: {{ trip.status }}</p>
+    <p>Beschreibung: {{ trip.description || 'Keine Beschreibung' }}</p>
+    <p>Reisebegleitung: {{ trip.travelWith || 'Keine Angabe' }}</p>
+    <p>Transportmittel: {{ trip.transportMode || 'Keine Angabe' }}</p>
+
+    @if (trip.rating) {
+        <p>Bewertung: {{ trip.rating }} von 5</p>
+    }
+
+    <button type="button" (click)="onDelete(trip._id)">
+        Löschen
+    </button>
+
+    <button type="button" (click)="onEdit(trip)">
+        Bearbeiten
+    </button>
+   </article>
 }

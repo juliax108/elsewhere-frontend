@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef} from '@angular/core';
 
 import { Trip } from '../trip';
 
@@ -14,12 +13,15 @@ import { DatePipe } from '@angular/common';
 export class TripList implements OnInit {
   trips: any[] = [];
 
-  constructor(private tripService: Trip) {}
+  constructor(
+    private tripService: Trip,
+    private changeDetector: ChangeDetectorRef
+  ) {}
 
   ngOnInit() {
     this.tripService.getTrips().subscribe((data: any) => {
-      console.log('Daten vom Backend:', data);
       this.trips = data;
+      this.changeDetector.detectChanges();
     });
 
     this.tripService.tripCreated.subscribe(() => {

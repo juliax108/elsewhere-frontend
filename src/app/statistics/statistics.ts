@@ -1,41 +1,57 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Trip } from '../trip';
-import { max } from 'rxjs';
 import { countryTranslations, countryContinents } from '../country-data';
+import { DatePipe } from '@angular/common';
 
 
 @Component({
   selector: 'app-statistics',
-  imports: [],
+  imports: [DatePipe],
   templateUrl: './statistics.html',
   styleUrl: './statistics.css',
 })
 export class Statistics implements OnInit {
   trips: any[] = [];
 
-  constructor(private tripService: Trip) {}
+  constructor(
+    private tripService: Trip,
+    private changeDetector: ChangeDetectorRef
+  ) {}
 
   ngOnInit() {
-    this.tripService.getTrips().subscribe((data: any) => {
-      console.log('Daten vom Backend:', data);
-      this.trips = data;
-    });
+    this.loadTrips();
 
     this.tripService.tripCreated.subscribe(() => {
-      this.tripService.getTrips().subscribe((data: any) => {
-        this.trips = data;
-      });
+      this.loadTrips();
+    })
+  }
+
+  loadTrips() {
+    this.tripService.getTrips().subscribe((data: any) => { 
+      console.log('Daten vom Backend:', data);
+      this.trips = data;
+      this.changeDetector.detectChanges();
     });
+  }
+
+  getAllStops() {
+    return this.trips.flatMap((trip: any) => trip.stops || []);
   }
 
   getUniqueCountries() {
-    const uniqueCountries = new Set(this.trips.map((trip: any) => trip.country));
-    return uniqueCountries.size;
+    const countries = this.getAllStops()
+      .map((stop: any) => stop.country)
+      .filter((country: string) => country);
+
+    return new Set(countries).size;
   }
 
   getUniqueCities() {
-    const uniqueCities = new Set(this.trips.map((trip: any) => trip.city));
-    return uniqueCities.size;
+    const cities = this.getAllStops()
+      .map((stop: any) => stop.city)
+      .filter((city: string) => city);
+
+    return new Set(cities).size;
   }
 
   getWorldPercentage() {
@@ -45,8 +61,12 @@ export class Statistics implements OnInit {
   getMostFrequentCountry() {
     const counter: any = {};
 
-    this.trips.forEach((trip: any) => {
-      counter[trip.country] = (counter[trip.country] || 0) + 1;
+    this.getAllStops().forEach((stop: any) => {
+      const country = stop.country;
+
+      if (country) {
+      counter[country] = (counter[country] || 0) + 1;
+      }
     });
 
     let mostFrequentCountry = '';
@@ -59,14 +79,18 @@ export class Statistics implements OnInit {
       }
     }
 
-    return mostFrequentCountry;
+    return mostFrequentCountry || 'Noch keine Daten';
   }
 
   getMostFrequentCity() {
     const counter: any = {};
 
-    this.trips.forEach((trip: any) => {
-      counter[trip.city] = (counter[trip.city] || 0) + 1;
+    this.getAllStops().forEach((stop: any) => {
+      const city = stop.city;
+
+      if (city) {
+      counter[city] = (counter[city] || 0) + 1;
+      }
     });
 
     let mostFrequentCity = '';
@@ -79,17 +103,38 @@ export class Statistics implements OnInit {
       }
     }
 
-    return mostFrequentCity;
+    return mostFrequentCity || 'Noch keine Daten';
   }
 
   getUniqueContinents() {
-    const continents = this.trips.map((trip: any) => {
-      const englishName = countryTranslations[trip.country];
-      return countryContinents[englishName];
-    });
+    const continents = this.getAllStops()
+      .map((trip: any) => {
+        const englishName = countryTranslations[trip.country];
+        return countryContinents[englishName];
+      })
+      .filter((continent: string) => continent);
 
-    const unqiueContinents = new Set(continents);
-    return unqiueContinents.size;
+    return new Set(continents).size;
   }
-  
+
+  getNextTrip() {
+    const today = new Date();
+
+    const plannedTrips = this.trips
+      .filter((trip: any) => {
+        if (trip.status !== 'geplant' || !trip.startDate) {
+          return false;
+        }
+
+        return new Date(trip.startDate) >= today;
+      })
+      .sort((firstTrip: any, secondTrip: any) => {
+        return (
+          new Date(firstTrip.startDate).getTime() -
+          new Date(secondTrip.startDate).getTime()
+        );
+      });
+
+      return plannedTrips[0] || null;
+  }
 }

@@ -31,7 +31,10 @@ export class WorldMap implements OnInit {
       );
 
       const visitedCountries = allStops
-      .map((trip: any) => countryTranslations[trip.country])
+      .map((stop: any) => {
+        const germanCountry = stop.country?.trim();
+        return countryTranslations[germanCountry];
+      })
       .filter((country: string) => country);
 
       allStops.forEach((stop: any, index: number) => {
