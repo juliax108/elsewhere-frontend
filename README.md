@@ -4,7 +4,7 @@
 
 Elsewhere ist eine Webanwendung zur Planung und Verwaltung von Reisen.
 
-Nutzerinnen und Nutzer können Reisen anlegen, bearbeiten, anzeigen und löschen. Jede Reise kann mehrere Stationen enthalten und wird auf einer interaktiven Weltkarte dargestellt. Zusätzlich können Wunschreiseziele gespeichert,priorisiert und mit Informationen wie Notizen, Reisezeit und Wetter ergänzt werden.
+Nutzerinnen und Nutzer können Reisen anlegen, bearbeiten, anzeigen und löschen. Jede Reise kann mehrere Stationen enthalten und wird auf einer interaktiven Weltkarte dargestellt. Zusätzlich können Wunschreiseziele gespeichert, priorisiert und mit Informationen wie Notizen, Reisezeit und Wetter ergänzt werden.
 
 Die Anwendung wurde als Semesterprojekt im Modul Webtechnologien entwickelt.
 
@@ -49,20 +49,17 @@ Die Anwendung wurde als Semesterprojekt im Modul Webtechnologien entwickelt.
 
 ### Startseite 
 
-![Startseite]
-(screenshots/home1.png)
-(screenshots/home2.png)
+![Startseite.1](screenshots/home1.png)
+![Startseite.2](screenshots/home2.png)
 
 ### Reisen
 
-![Reisen]
-(screenshots/reisen1.png)
-(screenshots/reisen2.png)
+![Reisen.1](screenshots/reisen1.png)
+![Reisen.2](screenshots/reisen2.png)
 
 ### Wunschliste 
 
-![Wunschliste]
-(screenshots/wunschliste.png)
+![Wunschliste](screenshots/wunschliste.png)
 
 ## Verwendete Technologien
 
@@ -85,14 +82,14 @@ Die Anwendung wurde als Semesterprojekt im Modul Webtechnologien entwickelt.
 - MongoDB
 - Mongoose
 
-### Weitere Schittstellen
+### Weitere Schnittstellen
 
 - OpenWeather API
 - Geocoding für Kartenpositionen
 
 ## Installation
 
-### Vorraussetzungen
+### Voraussetzungen
 
 Für die Ausführung werden benötigt:
 
@@ -106,7 +103,7 @@ Für die Ausführung werden benötigt:
 Repository klonen und in den Projektordner wechseln:
 
 ```bash
-git clone <https://github.com/juliax108/elsewhere-frontend>
+git clone https://github.com/juliax108/elsewhere-frontend
 cd elsewhere-frontend
 ```
 
@@ -133,11 +130,11 @@ Damit alle Funktionen verfügbar sind, muss zusätzlich das Backend gestartet we
 ## Bedienung
 
 Über die Navigation können die verschiedenen Bereiche der Anwendung geöffnet werden. 
-Im Bereich "Reisen" können neue Reisen angelegt werden ud bestehende Einträge bearbeitet oder gelöscht werden. 
+Im Bereich "Reisen" können neue Reisen angelegt werden und bestehende Einträge bearbeitet oder gelöscht werden. 
 Im Bereich "Wunschliste" können zukünftige Reiseziele verwaltet werden. 
 Auf der Startseite werden die Weltkarte und verschiedene Reisestatistiken angezeigt.
 
-## Vervendete KI-Werkzeuge
+## Verwendete KI-Werkzeuge
 
 ### ChatGPT von OpenAI
 
@@ -147,4 +144,6 @@ ChatGPT wurde unterstützend verwendet für:
 - Unterstützung bei der Weltkarte mit Leaflet
 - Unterstützung bei der Wetterintegration
 - Fehlersuche und Debugging
+- Hilfe bei der Gestaltung der Benutzeroberfläche
+
 
