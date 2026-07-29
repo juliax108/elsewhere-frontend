@@ -1,110 +1,95 @@
 .home-hero {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
-    min-height: 620px;
-    background: #faf8f5;
-    overflow: hidden;
+    display: flex;
+    align-items: center;
+    min-height: 430px;
+    padding: 70px 8%;
+    background: var(--creme);
 }
 
 .hero-content {
-    display: felx;
-    flex-direction: column;
-    justify-content: center;
-    padding: 72px clamp(32px, 6vw, 96px);
-    z-index: 2;
+    max-width: 650px;
 }
 
 .hero-eyebrow {
     margin: 0 0 18px;
-    color: #b28552;
-    font-size: 0.95rem;
+    color: var(--champagner);
+    font-size: 14px;
     font-weight: 600;
-    letter-spacing: 0.08em;
+    letter-spacing: 1.8px;
+    line-height: 1.5;
     text-transform: uppercase;
 }
 
 .hero-content h1 {
-    max-width: 620px;
+    max-width: 600px;
     margin: 0;
-    color: #1a3a5c;
-    font-size: clamp(3rem, 5vw, 5.2rem);
-    line-height: 0.98;
-    letter-spacing: -0.04em;
+    color: var(--marineblau);
+    font-size: clamp(44px, 5vw, 68px);
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -1.5px;
 }
 
 .hero-description {
-    max-width: 570px;
-    margin: 32px 0 0;
-    color: #445466;
-    font-size: 1.08rem;
-    line-height: 1.75;
+    max-width: 550px;
+    margin: 28px 0 0;
+    color: #6f7d8d;
+    font-size: 18px;
+    line-height: 1.65;
 }
 
 .hero-actions {
     display: flex;
     flex-wrap: wrap;
-    gap: 16px;
-    margin-top: 26px;
+    gap: 14px;
+    margin-top: 28px;
 }
 
 .hero-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 52px;
+    min-height: 50px;
     padding: 0 26px;
-    border: 1px solid #1a3a5c;
+    border: 1px solid var(--marineblau);
     border-radius: 10px;
     font-weight: 600;
-    text-decoration:none;
+    text-decoration: none;
     transition:
         transform 0.2s ease,
         background-color 0.2s ease,
-        color 0.2s ease;
+        color 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 .hero-button:hover {
-    transform: (translateY(-2px));
+    transform: translateY(-2px);
 }
 
 .hero-button-primary {
-    background: #1a3a5c;
+    background-color: var(--marineblau);
     color: white;
+    box-shadow: 0 8px 18px rgba(26, 58, 92, 0.15);
 }
 
 .hero-button-primary:hover {
-    background: #122b46;
+    background-color: #122b46;
 }
 
 .hero-button-secondary {
-    background: transparent;
-    color: #1a3a5c,
+    background-color: transparent;
+    color: var(--marineblau);
 }
 
 .hero-button-secondary:hover {
-  background: #1a3a5c;
-  color: white;
-}
-
-.home-hero h1 {
-    margin: 8px 0 15px;
-    color: var(--marineblau);
-    font-size: 48px;
-    font-weight: 600;
-    line-height: 1.15;
-}
-
-.hero-text {
-    max-width: 580px;
-    margin: 0;
-    color: #6f7d8d;
-    font-size: 18px;
-    line-height: 1.6;
+    background-color: var(--marineblau);
+    color: white;
 }
 
 .home-map-section {
-    padding: 25px 8% 70px;
+    padding: 45px 8% 70px;
     background-color: var(--creme);
+    border-top: 1px solid rgba(26, 58, 92, 0.06);
 }
 
 .home-map-header {
@@ -147,17 +132,31 @@
     text-transform: uppercase;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
     .home-hero {
-        padding: 50px 20px 35px;
+        min-height: auto;
+        padding: 55px 20px;
     }
 
-    .home-hero h1 {
-        font-size: 36px;
+    .hero-content h1 {
+        font-size: 42px;
+    }
+
+    .hero-description {
+        font-size: 17px;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .hero-button {
+        width: 100%;
     }
 
     .home-map-section {
-        padding: 20px 20px 50px;
+        padding: 35px 20px 50px;
     }
 
     .home-map-header {
