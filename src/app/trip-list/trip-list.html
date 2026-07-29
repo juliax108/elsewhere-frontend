@@ -1,38 +1,97 @@
-@for (trip of trips; track trip._id) {
-   <article class="trip-card">
-    <h3>{{ trip.title }}</h3>
-        
-    <p>
-        {{ trip.startDate | date:'dd.MM.yyyy' }}
-        - 
-        {{ trip.endDate | date:'dd.MM.yyyy' }} 
-    </p>
+<section class="trip-list-section">
+    <div class="trip-list-header">
+        <div>
+            <p class="eyebrow">Deine Reisen</p>
+            <h2>Alle Abenteuer auf einen Blick</h2>
+        </div>
 
-    <div>
-        <strong>Stationen:</strong>
-
-        @for (stop of trip.stops; track stop._id) {
-            <p>{{ stop.city }}, {{ stop.country }}</p>
-        } @empty {
-            <p>Keine Stationen vorhanden</p>
-        }
+        <p class="trip-count">
+            {{ trips.length }} Reisen
+        </p>
     </div>
 
-    <p>Status: {{ trip.status }}</p>
-    <p>Beschreibung: {{ trip.description || 'Keine Beschreibung' }}</p>
-    <p>Reisebegleitung: {{ trip.travelWith || 'Keine Angabe' }}</p>
-    <p>Transportmittel: {{ trip.transportMode || 'Keine Angabe' }}</p>
+    <div class="trip-grid">
+        @for (trip of trips; track trip._id) {
+            <article class="trip-card">
+                <div class="trip-card-header">
+                    <div>
+                        <span class="trip-status">
+                            {{ trip.status }}
+                        </span>
 
-    @if (trip.rating) {
-        <p>Bewertung: {{ trip.rating }} von 5</p>
-    }
+                        <h3>{{ trip.title }}</h3>
+                    </div>
 
-    <button type="button" (click)="onDelete(trip._id)">
-        Löschen
-    </button>
+                    @if (trip.ratin) {
+                        <div class="trip-rating">
+                            ★ {{ trip.rating }}/5
+                        </div>
+                    }
+                </div>
 
-    <button type="button" (click)="onEdit(trip)">
-        Bearbeiten
-    </button>
-   </article>
-}
+                <p class="trip-date">
+                    {{ trip.startDAte | date:'dd.MM.yyyy' }}
+                    - 
+                    {{trip.endDate | date:'dd.MM.yyyy' }}
+                </p>
+
+                <div class="trip-details">
+                    <div class="detail.block">
+                        <strong>Stationen</strong>
+
+                        <div class="stops-list">
+                            @for (stop of trip.stops; track stop._id) {
+                                <span class="stop-badge">
+                                    {{ stop.city }} , {{ stop.country }}
+                                </span>
+                            } @empty {
+                                <span>Keine Stationen vorhanden</span>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="detail-row">
+                        <span>Reisebegleitung</span>
+                        <strong>
+                            {{ trip.travelWith || 'Keine Angabe' }}
+                        </strong>
+                    </div>
+
+                    <div class="detail-row">
+                        <span>Transportmittel</span>
+                        <strong>
+                            {{ trip.transportMode || 'Keine Angabe'}}
+                        </strong>
+                    </div>
+                </div>
+
+                <p class="trip-description">
+                    {{ trip.description || 'Keine Beschreibung vorhanden.' }}
+                </p>
+
+                <div class="trip-actions">
+                    <button
+                        class="edit-button"
+                        type="button"
+                        (click)="onEdit(trip)"
+                    >
+                        Bearbeiten
+                    </button>
+
+                    <button
+                        class="delete-button"
+                        type="button"
+                        (click)="onDelete(trip._id)"
+                    >
+                        Löschen
+                    </button>
+                </div>
+            </article>
+        } @empty {
+            <div class="empty-state">
+                <h3>Noch keine Reisen vorhanden</h3>
+                <p>Lege deine erste Reise an und starte dein nächstes Abendteuer.</p>
+            </div>
+        }
+    </div>
+</section>
