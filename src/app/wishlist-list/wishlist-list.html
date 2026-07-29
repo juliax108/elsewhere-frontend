@@ -1,16 +1,84 @@
-<p>wishlist-list works!</p>
+<section class="wishlist-section">
 
-@for (wishlistItem of wishlist; track wishlistItem._id) {
-    <p>{{ wishlistItem.country }}</p>
-    <p>{{ wishlistItem.city }}</p>
-    <p>{{ wishlistItem.bestTravelTime }}</p>
-    <p>{{ wishlistItem.notes }}</p>
-    <p>{{ wishlistItem.priority }}</p>
+    <div class="wishlist-header">
+        <div>
+            <p class="eyebrow">Deine Wunschliste</p>
+            <h2>Orte, die du noch entdecken möchtest</h2>
+        </div>
 
-    <button (click)="onDelete(wishlistItem._id)">Löschen</button>
-    <button (click)="onEdit(wishlistItem)">Bearbeiten</button>
+        <p class="wishlist-count">
+            {{ wishlist.length }} Reiseziele
+        </p>
+    </div>
 
-    @if (weatherData[wishlistItem.city]) {
-        <p>Aktuelles Wetter: {{ weatherData[wishlistItem.city].main.temp }}°C</p>
-    }
-}
+    <div class="wishlist-grid">
+
+        @for(wishlistItem of wishlist; track wishlistItem._id) {
+            <article class="wishlist-card">
+                <div class="wishlist-card-header">
+                    <div>
+                        <span class="priority-badge">
+                            Priorität {{ wishlistItem.priority }}
+                        </span>
+
+                        <h3>{{ wishlistItem.city }}</h3>
+
+                        <p class="country">
+                            {{ wishlistItem.country }}
+                        </p>
+                    </div>
+                </div>
+
+                <div class="wishlist-details">
+                    <div class="detail-row">
+                        <span>Beste Reisezeit</span>
+                        <strong>
+                            {{ wishlistItem.bestTravelTime || 'Keine Angabe'}}
+                        </strong>
+                    </div>
+
+                    @if (weatherData[wishlistItem.city]) {
+                        <div class="detail-row">
+                            <span>Aktuelles Wetter</span>
+                            <strong>
+                                {{ weatherData[wishlistItem.city].main.temp }} °C
+                            </strong>
+                        </div>
+                    }
+
+                </div>
+
+                <p class="wishlist-notes">
+                    {{ wishlistItem.notes || 'Keine Notizen vorhanden.'}}
+                </p>
+            
+
+            <div class="wishlist-actions">
+                    <button
+                        class="edit-button"
+                        type="button"
+                        (click)="onEdit(wishlistItem)">
+                        Bearbeiten
+                    </button>
+
+                    <button
+                        class="delete-button"
+                        type="button"
+                        (click)="onDelete(wishlistItem._id)">
+                        Löschen
+                    </button>
+                </div>
+
+            </article>
+
+        } @empty {
+
+            <div class="empty-state">
+                <h3>Noch keine Wunschziele vorhanden</h3>
+                <p>Füge einen Ort hinzu, den du später bereisen möchtest.</p>
+            </div>
+
+        }
+
+    </div>
+</section>
