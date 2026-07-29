@@ -1,0 +1,53 @@
+.home-hero {
+    padding: 70px 8% 50px;
+    background-color: var(--creme);
+}
+
+-home-hero h1 {
+    margin: 8px 0 15px;
+    color: var(--marineblaue);
+    font-size: 48px;
+    font-weight: 600px;
+}
+
+.home-hero p:last-child {
+    max-width: 600px;
+    margin: 0;
+    color: #6f7d8d;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.home-map-header h2 {
+    margin: 8px 0 0;
+    color: var(--marineblaue);
+    font-size: 36px;
+    font-weight: 600;
+}
+
+.eyebrow {
+    margin: 0;
+    color: var(--champagner);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+@media (max-width: 600px) {
+    .home-hero {
+        padding: 50px 20px 35px;
+    }
+
+    .home-hero h1 {
+        font-size: 36px;
+    }
+
+    .home-map-section {
+        padding: 20px 20px 50px;
+    }
+
+    .home-map-header h2 {
+        font-size: 30px;
+    }
+}
