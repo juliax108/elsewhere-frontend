@@ -1,76 +1,103 @@
-<form [formGroup]="tripForm" (ngSubmit)="onSubmit()">
+<form
+    class="trip-form"
+    [formGroup]="tripForm"
+    (ngSubmit)="onSubmit()">
 
-    <input formControlName="title" placeholder="Reisename">
+    <h2>Neue Reise</h2>
 
-    <div class="mb-3">
-        <label class="form-label">Status</label>
-        <select class="form-select" formControlName="status">
+    <div class="input-group">
+        <input
+            formControlName="title"
+            placeholder="Reisename">
+
+        <select formControlName="status">
             <option value="geplant">Geplant</option>
             <option value="abgeschlossen">Abgeschlossen</option>
         </select>
     </div>
 
-   <div formArrayName="stops">
-    @for (stop of stops.controls; track $index) {
-        <div [formGroupName]="$index">
-            <h3>Station {{ $index +1 }}</h3>
+    <div class="stops-section" formArrayName="stops">
 
-            <input
-                formControlName="country"
-                type="text"
-                placeholder="Land">
-            
-            <input
-                formControlName="city"
-                type="text"
-                placeholder="Stadt">
+        @for (stop of stops.controls; track $index) {
+            <div class="stop-card" [formGroupName]="$index">
 
-            @if(stops.length > 1) {
-                <button
-                    type="button"
-                    (click)="removeStop($index)">
-                    Station entfernen
-                </button>
-            }
-        </div>
-    }
-   </div>
+                <div class="stop-header">
+                    <h3>Station {{ $index + 1 }}</h3>
 
-   <button
-    type="button"
-    (click)="addStop()">
-    + Station hinzufügen
-   </button>
+                    @if (stops.length > 1) {
+                        <button
+                            class="remove-stop"
+                            type="button"
+                            (click)="removeStop($index)">
+                            Station entfernen
+                        </button>
+                    }
+                </div>
 
-    <input formControlName="startDate" type="date">
+                <div class="input-group">
+                    <input
+                        formControlName="country"
+                        placeholder="Land">
 
-    <input formControlName="endDate" type="date">
+                    <input
+                        formControlName="city"
+                        placeholder="Stadt">
+                </div>
 
-    <input formControlName="description" placeholder="Beschreibung">
+            </div>
+        }
 
-    <input formControlName="travelWith" placeholder="Mit wem?">
+    </div>
 
-    <select formControlName="transportMode">
-        <option value="">Transportmittel</option>
-        <option value="Flugzeug">Flugzeug</option>
-        <option value="Auto">Auto</option>
-        <option value="Bahn">Bahn</option>
-        <option value="Bus">Bus</option>
-        <option value="Schiff">Schiff</option>
-    </select>
+    <button
+        class="add-stop"
+        type="button"
+        (click)="addStop()">
+        + Station hinzufügen
+    </button>
+
+    <div class="input-group">
+        <input
+            formControlName="startDate"
+            type="date">
+
+        <input
+            formControlName="endDate"
+            type="date">
+    </div>
+
+    <input
+        formControlName="description"
+        placeholder="Beschreibung">
+
+    <div class="input-group">
+        <input
+            formControlName="travelWith"
+            placeholder="Mit wem?">
+
+        <select formControlName="transportMode">
+            <option value="">Transportmittel</option>
+            <option value="Flugzeug">Flugzeug</option>
+            <option value="Auto">Auto</option>
+            <option value="Bahn">Bahn</option>
+            <option value="Bus">Bus</option>
+            <option value="Schiff">Schiff</option>
+        </select>
+    </div>
 
     @if (tripForm.get('status')?.value === 'abgeschlossen') {
-        <input formControlName="rating" 
-        type="number" 
-        min="1" 
-        max="5" 
-        placeholder="Bewertung (1-5)">
+        <input
+            formControlName="rating"
+            type="number"
+            min="1"
+            max="5"
+            placeholder="Bewertung (1–5)">
     }
-        
 
-    <button type="submit">Speichern</button>
+    <button
+        class="save-button"
+        type="submit">
+        Speichern
+    </button>
+
 </form>
-
-
-
-
