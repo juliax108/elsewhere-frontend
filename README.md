@@ -1,59 +1,150 @@
-# ElsewhereFrontend
+# Elsewhere
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.13.
+## Projektbeschreibung
 
-## Development server
+Elsewhere ist eine Webanwendung zur Planung und Verwaltung von Reisen.
 
-To start a local development server, run:
+Nutzerinnen und Nutzer können Reisen anlegen, bearbeiten, anzeigen und löschen. Jede Reise kann mehrere Stationen enthalten und wird auf einer interaktiven Weltkarte dargestellt. Zusätzlich können Wunschreiseziele gespeichert,priorisiert und mit Informationen wie Notizen, Reisezeit und Wetter ergänzt werden.
+
+Die Anwendung wurde als Semesterprojekt im Modul Webtechnologien entwickelt.
+
+## Funktionen
+
+### Reisen
+
+- Reisen erstellen
+- Reisen bearbeiten
+- Reisen löschen
+- Reisen anzeigen
+- mehrere Stationen pro Reise speichern
+- Status einer Reise festlegen
+- Reisebegleitung und Transportmittel erfassen
+- abgeschlossene Reisen bewerten
+
+### Wunschliste 
+
+- Wunschreiseziele erstellen
+- Wunschreiseziele bearbeiten
+- Wunschreiseziele löschen
+- Prioritäten vergeben
+- Notizen speichern
+- beste Reisezeit festhalten
+- Wetterinformationen anzeigen
+
+### Weltkarte 
+
+- besuchte Länder darstellen
+- Reiseziele durch Marker anzeigen
+- mehrere Stationen einer Reise berücksichtigen
+
+### Statistiken
+
+- Anzahl besuchter Länder
+- Anzahl besuchter Städte
+- Anteil bereister Länder weltweit
+- häufigstes Reiseziel
+- nächste geplante Reise
+
+## Screenshots
+
+### Startseite 
+
+![Startseite]
+(screenshots/home1.png)
+(screenshots/home2.png)
+
+### Reisen
+
+![Reisen]
+(screenshots/reisen1.png)
+(screenshots/reisen2.png)
+
+### Wunschliste 
+
+![Wunschliste]
+(screenshots/wunschliste.png)
+
+## Verwendete Technologien
+
+### Frontend
+
+- Angular 
+- TypeScript
+- HTML
+- CSS 
+- Bootstrap
+- Leaflet
+
+### Backend
+
+- Node.js
+- Express
+
+### Datenbank
+
+- MongoDB
+- Mongoose
+
+### Weitere Schittstellen
+
+- OpenWeather API
+- Geocoding für Kartenpositionen
+
+## Installation
+
+### Vorraussetzungen
+
+Für die Ausführung werden benötigt:
+
+- Node.js
+- npm
+- MongoDB
+- das Elsewhere-Backend
+
+### Frontend installieren 
+
+Repository klonen und in den Projektordner wechseln:
+
+```bash
+git clone <https://github.com/juliax108/elsewhere-frontend>
+cd elsewhere-frontend
+```
+
+Abhängigkeiten installieren:
+
+```bash
+npm install
+```
+
+Frontend starten:
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Die Anwendung ist anschließend unter folgender Adresse erreichbar:
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```text
+http://localhost:4200
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Damit alle Funktionen verfügbar sind, muss zusätzlich das Backend gestartet werden.
 
-```bash
-ng generate --help
-```
+## Bedienung
 
-## Building
+Über die Navigation können die verschiedenen Bereiche der Anwendung geöffnet werden. 
+Im Bereich "Reisen" können neue Reisen angelegt werden ud bestehende Einträge bearbeitet oder gelöscht werden. 
+Im Bereich "Wunschliste" können zukünftige Reiseziele verwaltet werden. 
+Auf der Startseite werden die Weltkarte und verschiedene Reisestatistiken angezeigt.
 
-To build the project run:
+## Vervendete KI-Werkzeuge
 
-```bash
-ng build
-```
+### ChatGPT von OpenAI
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+ChatGPT wurde unterstützend verwendet für:
 
-## Running unit tests
+- einzelne Fragen zu Angular, TypeScript, HTML und CSS
+- Unterstützung bei der Weltkarte mit Leaflet
+- Unterstützung bei der Wetterintegration
+- Fehlersuche und Debugging
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
