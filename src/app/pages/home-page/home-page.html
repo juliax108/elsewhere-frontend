@@ -1,16 +1,30 @@
 <section class="home-hero">
-    <p class="exebrow">Elsewhere</p>
-    <h1>Ready for your next adventure"</h1>
-    <p>PLane deine Reisne, entdecke neue Orte und behalte deine Abendteuer im Blick.</p>
+    <div class="hero-content">
+        <p class="eyebrow">Elsewhere</p>
+        <h1>Ready for your next adventure"</h1>
+        <p class="hero-text">
+            Plane deine Reisen, entdecke neue Orte und behalte deine Abenteuer im Blick.
+        </p>
+    </div>
 </section>
 
 <section class="home-map-section">
     <div class="home-map-header">
+        <div>
         <p class="eyebrow">Deine Reisekarte</p>
         <h2>Orte, die du bereits entdeckt hast</h2>
+        </div>
+
+        <p class="map-description">
+            Deine besuchten Länder und Stationen auf einen Blick.
+        </p>
     </div>
 
-    <app-world-map></app-world-map>
+    <div class="map-wrapper">
+        <app-world-map></app-world-map>
+    </div>
+
+    
 </section>
 
 <app-statistics></app-statistics>

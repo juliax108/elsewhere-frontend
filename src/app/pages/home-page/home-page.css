@@ -1,28 +1,62 @@
 .home-hero {
-    padding: 70px 8% 50px;
+    padding: 70px 8% 55px;
     background-color: var(--creme);
 }
 
--home-hero h1 {
-    margin: 8px 0 15px;
-    color: var(--marineblaue);
-    font-size: 48px;
-    font-weight: 600px;
+.hero-content {
+    max-width: 750px;
 }
 
-.home-hero p:last-child {
-    max-width: 600px;
+.home-hero h1 {
+    margin: 8px 0 15px;
+    color: var(--marineblau);
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 1.15;
+}
+
+.hero-text {
+    max-width: 580px;
     margin: 0;
     color: #6f7d8d;
     font-size: 18px;
     line-height: 1.6;
 }
 
+.home-map-section {
+    padding: 25px 8% 70px;
+    background-color: var(--creme);
+}
+
+.home-map-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 30px;
+    margin-bottom: 25px;
+}
+
+
 .home-map-header h2 {
     margin: 8px 0 0;
-    color: var(--marineblaue);
+    color: var(--marineblau);
     font-size: 36px;
     font-weight: 600;
+}
+
+.map-description {
+    max-width: 320px;
+    margin: 0;
+    color: #6f7d8d;
+    line-height: 1.5;
+}
+
+.map-wrapper {
+    padding: 10px;
+    border: 1px solid rgba(26, 58, 92, 0.08);
+    border-radius: 26px;
+    background-color: white;
+    box-shadow: 0 12px 30px rgba(26, 58, 92, 0.08);
 }
 
 .eyebrow {
@@ -45,6 +79,14 @@
 
     .home-map-section {
         padding: 20px 20px 50px;
+    }
+
+    .home-map-header {
+        display: block;
+    }
+
+    .map-description {
+        margin-top: 12px;
     }
 
     .home-map-header h2 {
