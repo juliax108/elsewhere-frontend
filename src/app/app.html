@@ -4,11 +4,24 @@
     </a>
 
     <div class="nav-links">
-        <a routerLink="/">Home</a>
+        <a
+            routerLink="/"
+            routerLinkActive="active-link"
+            [routerLinkActiveOptions]="{ exact: true }">
+            Home
+        </a>
 
-        <a routerLink="/reisen">Reisen</a>
+        <a 
+            routerLink="/reisen"
+            routerLinkActive="active-link" >
+            Reisen
+        </a>
 
-        <a routerLink="/wunschliste">Wunschliste</a>
+        <a 
+            routerLink="/wunschliste"
+            routerLinkActive="active-link">
+            Wunschliste
+        </a>
     </div>
 </nav>
 
