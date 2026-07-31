@@ -145,5 +145,5 @@ ChatGPT wurde unterstützend verwendet für:
 - Unterstützung bei der Wetterintegration
 - Fehlersuche und Debugging
 - Hilfe bei der Gestaltung der Benutzeroberfläche
-
+- Hilfe bei Bearbeitung des README
 
