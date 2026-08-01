@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+
+// Komponenten der Startseite
 import { Statistics } from '../../statistics/statistics';
 import { WorldMap } from '../../world-map/world-map';
 
