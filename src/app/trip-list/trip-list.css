@@ -1,8 +1,10 @@
+/* gesamter Bereich der Reiseliste */ 
 .trip-list-section {
     padding: 70px 8%;
     background-color: var(--creme);
 }
 
+/* Überschrift und Anzahl der Reisen */
 .trip-list-header {
     display: flex;
     justify-content: space-between;
@@ -39,6 +41,7 @@
     gap: 25px;
 }
 
+/* Gestaltung einer einzelnen Reisekarte */
 .trip-card {
     display: flex;
     flex-direction: column;
@@ -49,10 +52,11 @@
     box-shadow: 0 12px 30px rgba(26, 58, 92, 0.08);
 }
 
+/* Kopfbereich mit Status, Titel und Bewertung */
 .trip-card-header {
     display: flex;
     justify-content: space-between;
-    align-items: felx-start;
+    align-items: flex-start;
     gap: 20px;
 }
 
@@ -84,8 +88,9 @@
     color: #6f7d8d;
 }
 
+/* zusätzliche Informationen der Reise */
 .trip-details {
-    display: felx;
+    display: flex;
     flex-direction: column;
     gap: 15px;
 }
@@ -96,6 +101,7 @@
     color: var(--marineblau);
 }
 
+/* Stationen werden als kleine Badges dargetsellt */
 .stops-list {
     display: flex;
     flex-wrap: wrap;
@@ -122,7 +128,7 @@
     color: #6f7d8d;
 }
 
-.stop-row strong {
+.detail-row strong {
     color: var(--marineblau);
     text-align: right;
 }
@@ -132,6 +138,12 @@
     margin: 22px 0;
     color: #6f7d8d;
     line-height: 1.6;
+}
+
+.trip-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
 }
 
 .trip-actions button {
@@ -162,6 +174,7 @@
     background-color: var(--creme);
 }
 
+/* Anzeige, wenn noch keine Reisen vorhanden sind */
 .empty-state {
     grid-column: 1 / -1;
     padding: 50px;
@@ -180,12 +193,14 @@
     color: #6f7d8d;
 }
 
+/* Ab 900 Pixeln werden die Karten untereinander angezeigt */ 
 @media (max-width: 900px) {
     .trip-grid {
         grid-template-columns: 1fr;
     }
 }
 
+/* Mobile Darstellung */ 
 @media (max-width: 600px) {
     .trip-list-section {
         padding: 50px 20px;

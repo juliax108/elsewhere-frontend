@@ -1,3 +1,4 @@
+<!-- Formular ist mit Reactive Form auf trip-form.ts verbunden --> 
 <form
     class="trip-form"
     [formGroup]="tripForm"
@@ -5,6 +6,7 @@
 
     <h2>Neue Reise</h2>
 
+    <!-- zweispaltige Gruppe für Reisename und Status -->
     <div class="input-group">
         <input
             formControlName="title"
@@ -16,14 +18,17 @@
         </select>
     </div>
 
+    <!-- verbindet diesen Bereich mit dem stops-FormArray -->
     <div class="stops-section" formArrayName="stops">
 
+        <!-- für jede Station im FormArray wird ein eigener Formularbereich erzeugt -->
         @for (stop of stops.controls; track $index) {
             <div class="stop-card" [formGroupName]="$index">
 
                 <div class="stop-header">
                     <h3>Station {{ $index + 1 }}</h3>
 
+                    <!-- eine Station kann nur entfernt werden, wenn mehr als eine Station vorhanden ist -->
                     @if (stops.length > 1) {
                         <button
                             class="remove-stop"
@@ -34,6 +39,7 @@
                     }
                 </div>
 
+                <!-- Eingabefelder der aktuellen Station -->
                 <div class="input-group">
                     <input
                         formControlName="country"
@@ -49,6 +55,7 @@
 
     </div>
 
+    <!-- fügt dem FormArray eine weitere Station hinzu -->
     <button
         class="add-stop"
         type="button"
@@ -56,6 +63,7 @@
         + Station hinzufügen
     </button>
 
+    <!-- Reisezeitraum -->
     <div class="input-group">
         <input
             formControlName="startDate"
@@ -66,6 +74,7 @@
             type="date">
     </div>
 
+    <!-- weitere Informationen zur Reise -->
     <input
         formControlName="description"
         placeholder="Beschreibung">
@@ -85,6 +94,7 @@
         </select>
     </div>
 
+    <!-- eine Bewertung wird nur bei abgeschlossener Reise angezeigt -->
     @if (tripForm.get('status')?.value === 'abgeschlossen') {
         <input
             formControlName="rating"

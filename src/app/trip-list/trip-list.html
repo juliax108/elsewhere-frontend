@@ -1,4 +1,7 @@
+<!-- gesamter Bereich mit allen gespeicherten Reisen -->
 <section class="trip-list-section">
+
+    <!-- Überschrift und Anzahl der vorhandenen Reisen -->
     <div class="trip-list-header">
         <div>
             <p class="eyebrow">Deine Reisen</p>
@@ -10,9 +13,14 @@
         </p>
     </div>
 
+    <!-- Raster für die einzelnen Reisekarten -->
     <div class="trip-grid">
+
+        <!-- für jede Reise wird eine eigene Karte erzeugt -->
         @for (trip of trips; track trip._id) {
             <article class="trip-card">
+
+                <!-- Titel, Status und gegebenfalls Bewertung -->
                 <div class="trip-card-header">
                     <div>
                         <span class="trip-status">
@@ -22,27 +30,31 @@
                         <h3>{{ trip.title }}</h3>
                     </div>
 
-                    @if (trip.ratin) {
+                    <!-- Bewertung wird nur angezeigt, wenn eine Bewertung vorhanden ist -->
+                    @if (trip.rating) {
                         <div class="trip-rating">
                             ★ {{ trip.rating }}/5
                         </div>
                     }
                 </div>
 
+                <!-- Reisezeitraum mit Angular DatePipe -->
                 <p class="trip-date">
-                    {{ trip.startDAte | date:'dd.MM.yyyy' }}
+                    {{ trip.startDate | date:'dd.MM.yyyy' }}
                     - 
                     {{trip.endDate | date:'dd.MM.yyyy' }}
                 </p>
 
                 <div class="trip-details">
-                    <div class="detail.block">
+
+                    <!-- Anzeige aller Stationen der Reise -->
+                    <div class="detail-block">
                         <strong>Stationen</strong>
 
                         <div class="stops-list">
                             @for (stop of trip.stops; track stop._id) {
                                 <span class="stop-badge">
-                                    {{ stop.city }} , {{ stop.country }}
+                                    {{ stop.city }}, {{ stop.country }}
                                 </span>
                             } @empty {
                                 <span>Keine Stationen vorhanden</span>
@@ -50,6 +62,7 @@
                         </div>
                     </div>
 
+                    <!-- zusätzliche Reisedaten -->
                     <div class="detail-row">
                         <span>Reisebegleitung</span>
                         <strong>
@@ -65,10 +78,12 @@
                     </div>
                 </div>
 
+                <!-- falls keine Beschreibung vorhanden ist, wird Ersatztext angezeigt -->
                 <p class="trip-description">
                     {{ trip.description || 'Keine Beschreibung vorhanden.' }}
                 </p>
 
+                <!-- Aktionen zum Bearbeiten und Löschen -->
                 <div class="trip-actions">
                     <button
                         class="edit-button"
@@ -87,10 +102,13 @@
                     </button>
                 </div>
             </article>
+
         } @empty {
+
+            <!-- Anzeige, wenn noch keine Reise gespeichert wurde -->
             <div class="empty-state">
                 <h3>Noch keine Reisen vorhanden</h3>
-                <p>Lege deine erste Reise an und starte dein nächstes Abendteuer.</p>
+                <p>Lege deine erste Reise an und starte dein nächstes Abenteuer.</p>
             </div>
         }
     </div>

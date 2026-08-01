@@ -1,3 +1,4 @@
+/* Grundlayout des Reiseformulars als weiße Karte */
 .trip-form {
     margin: 40px 8%;
     padding: 32px;
@@ -14,12 +15,14 @@
     color: var(--marineblau);
 }
 
+/* 2 gleich breite Eingabefelder nebeneinander */
 .input-group {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 16px;
 }
 
+/* einheitliche Gestaltung aller Formularfelder */
 .trip-form input,
 .trip-form select {
     width: 100%;
@@ -30,6 +33,7 @@
     font: inherit;
 }
 
+/* abgegrenzter Bereich für jede einzelne Station */
 .stop-card {
     margin-bottom: 18px;
     padding: 20px;
@@ -38,6 +42,7 @@
     background: var(--creme);
 }
 
+/* Überschrift und Entfernen-Button einer Station */
 .stop-header {
     display: flex;
     justify-content: space-between;
@@ -50,6 +55,7 @@
     color: var(--marineblau);
 }
 
+/* gemeinsame Grundeinstellungen der Formular-Buttons */
 .add-stop,
 .remove-stop,
 .save-button {
@@ -83,6 +89,7 @@
     opacity: 0.9;
 }
 
+/* Mobile Darstellung: Felder werden untereinander angeordnet */
 @media (max-width: 700px) {
     .trip-form {
         margin: 20px;
