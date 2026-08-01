@@ -1,3 +1,5 @@
+// übersetzt deutsche Ländernamen in englische Namen
+// -> GeoJSON-Weltkarte verwendet englische Ländernamen
 export const countryTranslations: any = {
   'Deutschland': 'Germany',
   'Italien': 'Italy',
@@ -28,6 +30,8 @@ export const countryTranslations: any = {
   'Russland' : 'Russia',
 };
 
+// ordnet englische Ländernamen dem jeweiligen Kontinent zu
+// -> wird für die Statistik verwendet
 export const countryContinents: any = {
   'Germany': 'Europa',
   'Italy': 'Europa',
@@ -54,5 +58,4 @@ export const countryContinents: any = {
   'United States of America': 'Nordamerika',
   'Thailand': 'Asien',
   'Japan': 'Asien',
-  'Russia': 'Europa',
 };
