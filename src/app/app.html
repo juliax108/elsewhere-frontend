@@ -1,9 +1,15 @@
+<!-- Hauptnavigation der Anwendung -->
 <nav class="main-navbar">
+
+    <!-- Logo bzw. Name der Anwendung -->
     <a class="brand" routerLink="/">
         <span>Elsewhere</span>
     </a>
 
+    <!-- Navigationslinks -->
     <div class="nav-links">
+
+        <!-- Link zur Startseite -->
         <a
             routerLink="/"
             routerLinkActive="active-link"
@@ -11,12 +17,14 @@
             Home
         </a>
 
+        <!-- Link zur Reiseverwaltung -->
         <a 
             routerLink="/reisen"
             routerLinkActive="active-link" >
             Reisen
         </a>
 
+        <!-- Link zur Wunschliste -->
         <a 
             routerLink="/wunschliste"
             routerLinkActive="active-link">
@@ -25,6 +33,7 @@
     </div>
 </nav>
 
+<!-- hier werden die Seiten entsprechend der aktuellen Route angezeigt-->
 <main>
     <router-outlet></router-outlet>
 </main>

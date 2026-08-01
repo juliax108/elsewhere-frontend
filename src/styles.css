@@ -1,6 +1,8 @@
+/* Einbindung externer CSS-Bibliotheken */
 @import 'bootstrap/dist/css/bootstrap.min.css';
 @import 'leaflet/dist/leaflet.css';
 
+/* globale Farbvariablen der Anwendung */
 :root {
     --marineblau: #1a3a5c;
     --himmelblau: #eaf2fb;
@@ -11,6 +13,7 @@
 
 /* ----------- Navbar ----------- */
 
+/* Hauptnavigation */
 .main-navbar {
     position: sticky;
     top: 0;
@@ -28,6 +31,7 @@
     box-shadow: 0 2px 12px rgba(26, 58, 92, 0.05);
 }
 
+/* Logo bzw. Name der Anwendung */
 .brand {
     text-decoration: none;
 
@@ -39,12 +43,14 @@
     letter-spacing: 0.5px;
 }
 
+/* Container der Navigationslinks */
 .nav-links {
     display: flex;
     align-items: center;
     gap: 12px;
 }
 
+/* Darstellung der einzelnen Links */
 .nav-links a {
    padding: 9px 15px;
     text-decoration: none;
@@ -58,22 +64,26 @@
         background-color 0.2s;
 }
 
+/* Hover-Effekt */
 .nav-links a:hover {
     color: var(--marineblau);
     background-color: var(--himmelblau);
 }
 
+/* aktuell geöffnete Seite */
 .nav-links a.active-link {
     color: white;
     background-color: var(--marineblau);
 }
 
+/* Grundeinstellungen der gesamten Anwendung */
 body {
     margin: 0;
     color: var(--marineblau);
     background-color: var(--creme);
 }
 
+/* Mobile Darstellung der Navigation */
 @media (max-width: 600px) {
     .main-navbar {
         height: auto;
