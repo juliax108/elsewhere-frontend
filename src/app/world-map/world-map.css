@@ -1,6 +1,7 @@
+/* Container für die Leaflet-Weltkarte */
 #map {
-    width: 100%;
-    height: 500px;
-    border-radius: 22px;
-    overflow: hidden;
+    width: 100%;            /* Karte nutzt die komplette verfügbare Breite */
+    height: 500px;          /* feste Höhe der Karte */
+    border-radius: 22px;    /* abgerundete Ecken */
+    overflow: hidden;       /* Karteninhalt bleibt innerhalb der abgerundeten Ecken */
 }

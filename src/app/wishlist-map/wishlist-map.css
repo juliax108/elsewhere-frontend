@@ -1,0 +1,7 @@
+/* Container für die Leaflet-Karte der Wunschliste */
+#wishlist-map {
+    width: 100%;
+    height: 500px;
+    border-radius: 22px;
+    overflow: hidden;
+}
