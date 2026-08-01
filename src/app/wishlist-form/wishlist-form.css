@@ -1,3 +1,4 @@
+/* Grundlayout des Wunschlistenformulars */
 .wishlist-form{
     display: flex;
     flex-direction: column;
@@ -9,6 +10,7 @@
     box-shadow: 0 12px 30px rgba(26, 58, 92, 0.08);
 }
 
+/* Überschrift des Formulars */
 .wishlist-form-header h2 {
     margin: 8px 0 0;
     color: var(--marineblau);
@@ -16,6 +18,7 @@
     font-weight: 600;
 }
 
+/* kleine Überschrift oberhalb des Titels */
 .eyebrow {
     margin: 0;
     color: var(--champagner);
@@ -25,12 +28,14 @@
     text-transform: uppercase;
 }
 
+/* 2 Eingabefelder nebeneinander */
 .input-group {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 16px;
 }
 
+/* einheitliches Design aller Eingabefelder */
 .wishlist-form input,
 .wishlist-form textarea {
     width: 100%;
@@ -41,11 +46,13 @@
     font:inherit;
 }
 
+/* Notizfeld darf in der Höhe vergrößert wreden */
 .wishlist-form textarea {
     min-height: 110px;
     resize: vertical;
 }
 
+/* Speichern-Buttom */
 .save-button {
     padding: 12px 18px;
     border: none;
@@ -57,16 +64,19 @@
     cursor: pointer;
 }
 
+/* Hover-Effekt des Buttons */
 .save-button:hover {
     opacity: 0.9;
 }
 
+/* Mobile Darstellung */
 @media (max-width: 700px) {
     .wishlist-form {
         margin: 20px;
         padding: 22px;
     }
 
+    /* Untereinander statt nebeneinander */
     .input-group {
         grid-template-columns: 1fr;
     }

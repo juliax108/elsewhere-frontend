@@ -1,8 +1,10 @@
+/* gesamter Bereich der Wunschliste */
 .wishlist-section {
     padding: 70px 8%;
     background-color: var(--creme);
 }
 
+/* Überschrift und Anzahl der gespeicherten Wunschziele */
 .wishlist-header {
     display: flex;
     justify-content: space-between;
@@ -18,6 +20,7 @@
     font-weight: 600;
 }
 
+/* kleine Überschrift oberhalb des Haupttitels */
 .eyebrow {
     margin: 0;
     color: var(--champagner);
@@ -31,27 +34,31 @@
     color: #6f7d8d;
 }
 
+/* zweispaltiges Raster für die Wunschlistenkarten */
 .wishlist-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 25px;
 }
 
+/* Gestaltung einer einzelnen Wunschlistenkarte */
 .wishlist-card {
     display: flex;
     flex-direction: column;
     padding: 28px;
     border-radius: 24px;
     background: white;
-    border: 1px solid rgba(26,58,92,.08);
-    box-shadow: 0 12px 30px rgba(26,58,92,.08);
+    border: 1px solid rgba(26,58,92, 0.08);
+    box-shadow: 0 12px 30px rgba(26,58,92, 0.08);
     transition: .2s;
 }
 
+/* Karte bewegt sich beim Darüberfahren leicht nach oben */
 .wishlist-card:hover {
     transform: translateY(-4px);
 }
 
+/* Anzeige der Priorität als Badge */
 .priority-badge {
     display: inline-block;
     padding: 6px 12px;
@@ -63,7 +70,7 @@
 }
 
 .wishlist-card h3 {
-    margin: 12px 0  4px;
+    margin: 12px 0 4px;
     color: var(--marineblau);
     font-size: 25px;
 }
@@ -73,6 +80,7 @@
     color: #6f7d8d;
 }
     
+/* Bereich für Reisezeit und Wetter */
 .wishlist-details {
     margin: 20px 0;
 }
@@ -82,7 +90,7 @@
     justify-content: space-between;
     gap: 20px;
     padding: 12px 0;
-    border-bottom: 1px solid rgba(26,58,92,.08);
+    border-bottom: 1px solid rgba(26,58,92, 0.08);
 }
 
 .detail-row span {
@@ -93,12 +101,14 @@
     color: var(--marineblau);
 }
 
+/* Notizen nehmen den noch verfügbaren Platz der Karte ein */
 .wishlist-notes {
     flex-grow: 1;
     color: #6f7d8d;
     line-height: 1.6;
 }
 
+/* Buttons zum Bearbeiten und Löschen */
 .wishlist-actions {
     display: flex;
     justify-content: flex-end;
@@ -122,7 +132,7 @@
 }
 
 .delete-button {
-    border: 1px solid rgba(26,58,92,.18);
+    border: 1px solid rgba(26,58,92, 0.18);
     background: white;
     color: var(--marineblau);
 }
@@ -132,6 +142,7 @@
     opacity: .9;
 }
 
+/* Anzeige, wenn keine Wunschziele vorhanden sind */
 .empty-state {
     grid-column: 1/-1;
     padding: 50px;
@@ -140,12 +151,14 @@
     text-align: center;
 }
 
+/* ab 900 Pixeln werden die Karten untereinander angezeigt */
 @media (max-width:900px) {
     .wishlist-grid {
         grid-template-columns: 1fr;
     }
 }
 
+/* Mobile Darstellung */
 @media (max-width:700px) {
     .wishlist-section {
         padding: 50px 20px;

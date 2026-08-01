@@ -1,25 +1,29 @@
+<!-- Formular zum Erstellen oder Bearbeiten eines Wunschreiseziels -->
 <form class="wishlist-form" [formGroup]="wishlistForm" (ngSubmit)="onSubmit()">
 
+    <!-- Überschrift des Formulars -->
     <div class="wishlist-form-header">
         <p class="eyebrow">Wunschliste</p>
-        <h2>Neues Reiseziel hinzugefügen</h2>
+        <h2>Neues Reiseziel hinzufügen</h2>
     </div>
 
+    <!-- Land und Stadt -->
     <div class="input-group">
         <input formControlName="country" placeholder="Land">
          <input formControlName="city" placeholder="Stadt">
-   
-    </div>
+   </div>
 
+   <!-- zusätzliche Informationen -->
     <div class="input-group">
-        <input formControlName="bestTravelTime" placeholder="beste Reisezeit">
+        <input formControlName="bestTravelTime" placeholder="Beste Reisezeit">
         <input formControlName="priority" type="number" min="1" max="5" placeholder="Priorität (1-5)">
     </div>
  
+    <!-- Freitext für persönliche Notizen -->
     <textarea
         formControlName="notes" placeholder="Notizen">
     </textarea>
     
-
+    <!-- Formular speichern -->
     <button class="save-button" type="submit">Speichern</button>
 </form>
