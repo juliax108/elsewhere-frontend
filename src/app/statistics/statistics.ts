@@ -11,6 +11,8 @@ import { DatePipe } from '@angular/common';
   styleUrl: './statistics.css',
 })
 export class Statistics implements OnInit {
+
+  // enthält alle Reisen, die vom Backend geladen wurden
   trips: any[] = [];
 
   constructor(
@@ -19,33 +21,43 @@ export class Statistics implements OnInit {
   ) {}
 
   ngOnInit() {
+    // Reisen werden beim Öffnen der Komponente geladen 
     this.loadTrips();
 
+    // nach dem Erstellen oder Bearbeiten einer Reise werden die Statistiken erneut berechnet
     this.tripService.tripCreated.subscribe(() => {
       this.loadTrips();
     })
   }
 
+  // lädt alle Reisen vom Backend
   loadTrips() {
     this.tripService.getTrips().subscribe((data: any) => { 
       console.log('Daten vom Backend:', data);
+
       this.trips = data;
+
+      // aktualisiert die dargestellten Statistikwerte
       this.changeDetector.detectChanges();
     });
   }
 
+  // fasst die Stationen aller Reisen in einem Array zusammen
   getAllStops() {
     return this.trips.flatMap((trip: any) => trip.stops || []);
   }
 
+  // zählt unterschiedliche Länder
   getUniqueCountries() {
     const countries = this.getAllStops()
       .map((stop: any) => stop.country)
       .filter((country: string) => country);
 
+    // ein Set enthält jeden Wert nur einmal
     return new Set(countries).size;
   }
 
+  // zählt unterschiedliche Städte
   getUniqueCities() {
     const cities = this.getAllStops()
       .map((stop: any) => stop.city)
@@ -54,10 +66,12 @@ export class Statistics implements OnInit {
     return new Set(cities).size;
   }
 
+  // berechnet den Anteil der besuchten Länder an 195 Ländern
   getWorldPercentage() {
     return (this.getUniqueCountries() / 195 * 100).toFixed(2); 
   }
 
+  // ermittelt, welches Land in den Stationen am häufigsten vorkommt
   getMostFrequentCountry() {
     const counter: any = {};
 
@@ -72,6 +86,7 @@ export class Statistics implements OnInit {
     let mostFrequentCountry = '';
     let maxCount = 0;
 
+    // durchläuft alle gezählten Länder und merkt sich das Land mit dem höchsten Wert
     for (const country in counter) {
       if (counter[country] > maxCount) {
         maxCount = counter[country];
@@ -82,6 +97,7 @@ export class Statistics implements OnInit {
     return mostFrequentCountry || 'Noch keine Daten';
   }
 
+  // ermittelt, welche Stadt am häufigsten vorkommt
   getMostFrequentCity() {
     const counter: any = {};
 
@@ -106,28 +122,38 @@ export class Statistics implements OnInit {
     return mostFrequentCity || 'Noch keine Daten';
   }
 
+  // ermittelt die Anzahl unterschiedlicher Kontinente
   getUniqueContinents() {
     const continents = this.getAllStops()
-      .map((trip: any) => {
-        const englishName = countryTranslations[trip.country];
+      .map((stop) => {
+        const englishName = countryTranslations[stop.country];
         return countryContinents[englishName];
       })
+
+      // nicht gefundene Länder werden herausgefiltert
       .filter((continent: string) => continent);
 
     return new Set(continents).size;
   }
 
+  // sucht die nächste zukünftige, geplante Reise
   getNextTrip() {
     const today = new Date();
 
+    // Uhrzeit wird entfernt, damit heute beginnende Reisen zählen
+    today.setHours(0, 0, 0, 0);
+
     const plannedTrips = this.trips
       .filter((trip: any) => {
+        // nur geplante Reisen mit einem Startdatum berücksichtigen
         if (trip.status !== 'geplant' || !trip.startDate) {
           return false;
         }
 
         return new Date(trip.startDate) >= today;
       })
+
+      // frühestes Startdatum steht nach dem Sortieren an erster Stelle
       .sort((firstTrip: any, secondTrip: any) => {
         return (
           new Date(firstTrip.startDate).getTime() -
@@ -135,6 +161,8 @@ export class Statistics implements OnInit {
         );
       });
 
+      // 1. Element ist die nächste Reise
+      // falls keine existiert, wird null zurückgegeben
       return plannedTrips[0] || null;
   }
 }

@@ -1,19 +1,22 @@
+/* gesamter Bereich der Statistik */
 .statistics-section {
     width: 100%;
     padding: 70px 8%;
     background-color: var(--creme);
 }
 
+/* Überschrift der Statistik */
 .statistics-header {
     max-width: 700px;
     margin-bottom: 35px;
 }
 
+/* kleine Überschrift oberhalb des Titels */
 .eyebrow {
     margin-bottom: 8px;
     color: var(--champagner);
     font-size: 14px;
-    font-weight: 600px;
+    font-weight: 600;
     letter-spacing: 2px;
     text-transform: uppercase;
 }
@@ -26,31 +29,45 @@
     line-height: 1.2;
 }
 
+/* hervorgehobene Karte für die nächste geplante Reise */
+.next-trip-card {
+    margin-bottom: 25px;
+    padding: 35px;
+    border-radius: 22px;
+    background-color: var(--marineblau);
+    color: white;
+    box-shadow: 0 12px 30px rgba(26, 58, 92, 0.15);
+}
+
+/* Gestaltung der Karte für die nächste Reise */
 .next-trip-card h3 {
     margin: 8px 0 12px;
     font-size: 30px;
     font-weight: 600;
 }
 
-.mext-trip-card p {
+.next-trip-card p {
     margin: 6px 0;
 }
 
+/* Überschrift innerhalb jeder Statistik-Karte */
 .card-label {
     margin: 0;
     color: var(--champagner);
-    font-size: 13ßx;
+    font-size: 13px;
     font-weight: 600;
     letter-spacing: 1.5px;
     text-transform: uppercase;
 }
 
+/* Raster mit allen Statistik-Karten */
 .statistics-grid {
-    display: gri;
+    display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
 }
 
+/* Gestaltung einer Statistik-Karte */
 .statistics-card {
     min-height: 150px;
     padding: 25px;
@@ -58,32 +75,35 @@
     border-radius: 18px;
     background-color: white;
     box-shadow: 0 8px 25px rgba(26, 58, 92, 0.07);
-    transition: transorm 0.2 ease, box-shadow 0.2s ease;;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+/* Hover-Effekt */
 .statistics-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 12px 30px rgba(26, 58, 92, 0.12);
 }
 
-.statistics-crad .card-label {
+.statistics-card .card-label {
     color: #6f7d8d;
 }
 
 .statistics-card strong {
     display: block;
     margin-top: 25px;
-    color: var(--marineblaue);
+    color: var(--marineblau);
     font-size: 32px;
     font-weight: 600;
 }
 
+/* Tablet-Darstellung */
 @media (max-width: 1000px) {
     .statistics-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
+/* Mobile Darstellung */
 @media (max-width: 600px) {
     .statistics-section {
         padding: 50px 20px;

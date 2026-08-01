@@ -1,27 +1,39 @@
+<!-- gesamter Statistikbereich -->
 <section class="statistics-section">
+
+    <!-- Überschrift -->
     <div class="statistics-header">
         <p class="eyebrow">Deine Reiseübersicht</p>
         <h2>Die Welt, die du bereits entdeckt hast</h2>
     </div>
 
+    <!-- Karte für die nächste geplante Reise -->
     <div class="next-trip-card">
+
+        <!-- wird nur angezeigt, wenn eine geplante Reise existiert -->
         @if (getNextTrip(); as nextTrip) {
             <div>
                 <p class="card-label">Nächste Reise</p>
                 <h3>{{ nextTrip.title }}</h3>
 
+                <!-- Reisezeitraum -->
                 <p>
                     {{ nextTrip.startDate | date:'dd.MM.yyyy' }}
                     - 
                     {{ nextTrip.endDate | date:'dd.MM.yyyy' }}
                 </p>
 
+                <!-- Anzahl der Stationen -->
                 <p>
                     {{ nextTrip.stops.length }}
+
+                    <!-- Einzahl oder Mehrzahl je nach Anzahl -->
                     {{ nextTrip.stops.length === 1 ? 'Station' : 'Stationen' }}
                 </p>
             </div>
         } @else {
+
+            <!-- Anzeige, wenn aktuell keine Reise geplant ist -->
             <div>
                 <p class="card-label">Nächste Reise</p>
                 <h3>Noch keine Reise geplant</h3>
@@ -29,6 +41,7 @@
         }
     </div>
 
+    <!-- Raster mit allen Statistik-Karten -->
     <div class="statistics-grid">
         <article class="statistics-card">
             <p class="card-label">Reisen</p>
